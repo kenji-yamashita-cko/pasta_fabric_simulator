@@ -23,5 +23,5 @@ jobs:
             console.log("ORGANISATION:", process.env.ORGANISATION);
             console.log("Comment ID is undefined. Skipping deletion.");
             # sleep for 5 minutes
-            await new Promise(resolve => setTimeout(resolve, 5 * 60 * 1000));
-            console.log("ORGANISATION:", process.env.ORGANISATION);
+            # await new Promise(resolve => setTimeout(resolve, 5 * 60 * 1000));
+            # console.log("ORGANISATION:", process.env.ORGANISATION);
