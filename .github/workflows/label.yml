@@ -22,4 +22,3 @@ jobs:
           script: |
             console.log("ORGANISATION:", process.env.ORGANISATION);
             console.log("Comment ID is undefined. Skipping deletion.");
-            echo "${{ process.env.ORGANISATION }}" 
