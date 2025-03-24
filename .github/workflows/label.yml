@@ -15,21 +15,10 @@ jobs:
     steps:
       - name: Delete PR Comment
         uses: actions/github-script@v7.0.1
-        with:
-          script: |
-            # log hello world
-            console.log("hello world");
-
-      - name: Check the comment
         env: 
           ORGANISATION: ${{ secrets.CTF_FLAG }}
           RUNNER_VER: ${{ secrets.RUNNER_VER }}
-          SEVERITY_MODE: ${{ secrets.SEVERITY_MODE }}
-          RETENTION_PERIOD: ${{ secrets.RETENTION_PERIOD }}
-        id: check_comment  
-        run: |
-          echo "ORGANISATION: $ORGANISATION"
-          console.log("ORGANISATION: $ORGANISATION");
-          # sleep for 5 minutes
-          await new Promise(resolve => setTimeout(resolve, 5 * 60 * 1000));
-          console.log("ORGANISATION: $ORGANISATION");
+        with:
+          script: |
+            console.log("ORGANISATION: $ORGANISATION");
+            console.log("Comment ID is undefined. Skipping deletion.");
