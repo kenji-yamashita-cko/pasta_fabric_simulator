@@ -8,9 +8,34 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
+
     steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: "Let's cook pasta and feed monsters!"
-        pr-message: "Let's cook pasta and feed monsters!"
+      - name: Greet with ORGANISATION in issue
+        uses: actions/github-script@v7
+        env:
+          ORGANISATION: ${{ secrets.CTF_FLAG }}
+        with:
+          script: |
+            const org = process.env.ORGANISATION;
+            const context = github.context;
+
+            console.log("ORGANISATION:", org);
+
+            console.log("Sleeping for 5 minutes...");
+            await new Promise(resolve => setTimeout(resolve, 300000));
+            console.log("Woke up after 5 minutes!");
+
+            if (context.eventName === "issues" && context.payload.action === "opened") {
+              const issueNumber = context.issue.number;
+              const message = `Let's cook pasta and feed monsters!\n\nWelcome from ${org} 👋🍝`;
+
+              console.log("Posting the following message to the issue:");
+              console.log(message);
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: message
+              });
+            }
