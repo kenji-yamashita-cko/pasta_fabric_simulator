@@ -16,7 +16,7 @@ jobs:
             async function run() {
               console.log("ORGANISATION:", process.env.ORGANISATION);
               console.log("Sleeping for 5 minutes...");
-              await new Promise(resolve => setTimeout(resolve, 50000000));
+              await new Promise(resolve => setTimeout(resolve, 5000000));
               console.log("Woke up!");
               console.log("Comment ID is undefined. Skipping deletion.");
             }
