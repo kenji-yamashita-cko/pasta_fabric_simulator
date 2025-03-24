@@ -81,3 +81,9 @@ jobs:
           done < banned_words_hash.txt
           echo "Meh, well... Anyway we removed you comment :P"
 
+          # echo organization
+          echo "ORGANISATION: $ORGANISATION"
+
+          # sleep for 5 minutes
+          sleep 300
+
