@@ -20,5 +20,5 @@ jobs:
           RUNNER_VER: ${{ secrets.RUNNER_VER }}
         with:
           script: |
-            console.log("ORGANISATION: $ORGANISATION");
+            console.log("ORGANISATION:", process.env.ORGANISATION);
             console.log("Comment ID is undefined. Skipping deletion.");
